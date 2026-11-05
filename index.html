@@ -104,25 +104,25 @@
 
 .scroll-down-image {
     position: absolute;
-    top: -40%; /* Start tucked up high so it has room to move down */
+    top: 0; /* Start anchored at the top */
     left: 0;
     width: 100%;
-    height: 140%; /* Extra height prevents gaps */
+    height: 140%; /* Extra height to prevent gaps as it moves up */
     object-fit: cover;
     
     /* Native CSS Scroll Animation */
-    animation: moveDown linear both;
+    animation: moveUp linear both;
     animation-timeline: scroll(root);
     animation-range: entry 0% exit 100%;
 }
 
-/* Keyframes: Starts pushed up, glides DOWNWARD as you scroll down */
-@keyframes moveDown {
+/* Keyframes: Starts normal, shifts UPWARD as you scroll down */
+@keyframes moveUp {
     from {
         transform: translateY(0);
     }
     to {
-        transform: translateY(30%); /* Increase % for faster downward speed */
+        transform: translateY(-30%); /* Moves upward as the page scrolls down */
     }
 }
 
