@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>:: ~* Nurs' Kitchen Blog *~ :: Nurs' Chicken Spaghetti Recipe</title>
     <style type="text/css">
         /* Authentic 2000s Blog & Web 2.0 Theme */
@@ -26,11 +27,13 @@
 
         .main-wrapper {
             width: 760px;
+            max-width: 95%;
             margin: 0 auto;
             background-color: #FFFFFF;
             border: 4px groove #FF9900;
             padding: 12px;
             box-shadow: 0px 0px 15px #000000;
+            box-sizing: border-box;
         }
 
         .header-table {
@@ -75,20 +78,27 @@
             color: #000000;
             text-decoration: none;
             padding: 0 8px;
+            display: inline-block;
         }
 
+        /* Parallax Banner Styling */
         .banner-container {
             width: 100%;
-            height: 180px;
+            height: 220px;
             overflow: hidden;
             border: 2px solid #000000;
             margin: 10px 0;
             background-color: #000000;
+            position: relative;
         }
 
-        .banner-container img {
+        .parallax-banner {
             width: 100%;
-            margin-top: -150px;
+            height: 140%;
+            background-image: url('image.jpg');
+            background-position: center top;
+            background-size: cover;
+            background-attachment: fixed; /* Native CSS Parallax */
         }
 
         .content-box {
@@ -163,8 +173,9 @@
             border: 4px double #000000;
             padding: 4px;
             background-color: #FFFFFF;
-            max-width: 95%;
+            max-width: 100%;
             height: auto;
+            box-sizing: border-box;
         }
 
         .comments-section {
@@ -180,6 +191,7 @@
             padding: 10px;
             margin-bottom: 10px;
             font-size: 12px;
+            word-wrap: break-word;
         }
 
         .comment-header {
@@ -194,6 +206,7 @@
             color: #666666;
             font-weight: normal;
             font-size: 10px;
+            display: inline-block;
         }
 
         .comments-closed {
@@ -215,6 +228,72 @@
             border-top: 1px solid #CCCCCC;
             padding-top: 10px;
         }
+
+        /* ---------------------------------------------------- */
+        /* MOBILE RESPONSIVE LAYOUT (2000s Web Mobile Adaption) */
+        /* ---------------------------------------------------- */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 5px 0;
+            }
+
+            .main-wrapper {
+                width: 100%;
+                border-width: 2px;
+                padding: 6px;
+            }
+
+            .blog-title {
+                font-size: 22px;
+            }
+
+            .nav-bar {
+                font-size: 11px;
+                padding: 4px 2px;
+            }
+
+            .nav-bar a {
+                padding: 2px 4px;
+            }
+
+            .banner-container {
+                height: 140px;
+            }
+
+            /* Fallback position adjustment for mobile touch viewports */
+            .parallax-banner {
+                background-attachment: scroll;
+                background-position: center 20%;
+            }
+
+            .recipe-title {
+                font-size: 20px;
+            }
+
+            .meta-table td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                border-bottom: none;
+            }
+
+            .meta-table td:last-child {
+                border-bottom: 1px solid #CCCCCC;
+            }
+
+            ol.instructions {
+                padding-left: 18px;
+            }
+
+            .content-box {
+                padding: 10px;
+            }
+
+            .comment-header span {
+                display: block;
+                margin-top: 2px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -225,7 +304,7 @@
     <table class="header-table" cellpadding="0" cellspacing="0">
         <tr>
             <td>
-                <h1 class="blog-title">WELCOME TO KOTAKBAS' CORNER XD</h1>
+                <h1 class="blog-title">WELCOME TO NURS' CORNER XD</h1>
                 <div class="blog-subtitle">~* live * laugh * burn the chicken *~</div>
                 <div class="nav-bar">
                     <a href="#">[Home]</a> | 
@@ -243,9 +322,9 @@
         !!! NEW RECIPE ALERT !!! HOW TO MAKE SPAGHETTI LIKE A PRO !!! DO NOT TRY THIS AT HOME !!!
     </marquee>
 
-    <!-- Top Banner (Cropped Photo) -->
+    <!-- Top Banner (Parallax Cropped Photo) -->
     <div class="banner-container">
-        <img src="image.jpg" alt="Banner Image (Cropped)" title="Nurs in the zone">
+        <div class="parallax-banner" title="Nurs in the zone"></div>
     </div>
 
     <!-- Main Content -->
