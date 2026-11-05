@@ -92,14 +92,39 @@
             position: relative;
         }
 
-        .parallax-banner {
+        .banner-container {
     width: 100%;
-    height: 100%;
-    background-image: url('image.jpg');
-    background-size: cover;
-    background-position: center 0px; /* JS will control the Y position */
-    transition: background-position 0.05s ease-out; /* Keeps it smooth */
-        }
+    height: 180px;
+    overflow: hidden;
+    border: 2px solid #000000;
+    margin: 10px 0;
+    background-color: #000000;
+    position: relative;
+}
+
+.scroll-down-image {
+    position: absolute;
+    top: -40%; /* Start tucked up high so it has room to move down */
+    left: 0;
+    width: 100%;
+    height: 140%; /* Extra height prevents gaps */
+    object-fit: cover;
+    
+    /* Native CSS Scroll Animation */
+    animation: moveDown linear both;
+    animation-timeline: scroll(root);
+    animation-range: entry 0% exit 100%;
+}
+
+/* Keyframes: Starts pushed up, glides DOWNWARD as you scroll down */
+@keyframes moveDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(30%); /* Increase % for faster downward speed */
+    }
+}
 
         .content-box {
             background-color: #FFF8DC;
@@ -323,9 +348,10 @@
     </marquee>
 
     <!-- Top Banner (Parallax Cropped Photo) -->
-    <div class="banner-container">
-        <div class="parallax-banner" title="Nurs in the zone"></div>
-    </div>
+    <!-- Top Banner (CSS Scroll-Driven Downward Parallax) -->
+<div class="banner-container">
+    <img src="image.jpg" alt="Banner Image" class="scroll-down-image" title="Nurs in the zone">
+</div>
 
     <!-- Main Content -->
     <div class="content-box">
@@ -418,17 +444,6 @@
     </div>
 
 </div>
-
-    <script type="text/javascript">
-    window.addEventListener('scroll', function() {
-        var scrolled = window.pageYOffset;
-        var banner = document.querySelector('.parallax-banner');
-        if (banner) {
-            // Adjust 0.4 to speed up or slow down the downward movement
-            banner.style.backgroundPositionY = (scrolled * 0.4) + 'px';
-        }
-    });
-    </script>
 
 </body>
 </html>
