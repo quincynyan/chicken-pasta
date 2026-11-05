@@ -92,21 +92,14 @@
             position: relative;
         }
 
-        .banner-container {
-    perspective: 1px;
-    height: 220px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.parallax-banner {
+        .parallax-banner {
     width: 100%;
     height: 100%;
     background-image: url('image.jpg');
     background-size: cover;
-    /* Inverts scroll direction & depth inside the container */
-    transform: translateZ(-1px) scale(2); 
-}
+    background-position: center 0px; /* JS will control the Y position */
+    transition: background-position 0.05s ease-out; /* Keeps it smooth */
+        }
 
         .content-box {
             background-color: #FFF8DC;
@@ -425,6 +418,17 @@
     </div>
 
 </div>
+
+    <script type="text/javascript">
+    window.addEventListener('scroll', function() {
+        var scrolled = window.pageYOffset;
+        var banner = document.querySelector('.parallax-banner');
+        if (banner) {
+            // Adjust 0.4 to speed up or slow down the downward movement
+            banner.style.backgroundPositionY = (scrolled * 0.4) + 'px';
+        }
+    });
+    </script>
 
 </body>
 </html>
